@@ -9,3 +9,4 @@ modules:
   activate:
   - lab1-welcome
   - lab2
+  - lab3
