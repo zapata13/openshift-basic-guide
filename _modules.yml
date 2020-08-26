@@ -38,3 +38,23 @@ modules:
     vars:
       MASTER_URL:
       API_URL:
+  lab6:
+    name: Lab 6 - Replication and Recovery
+    vars:
+      MASTER_URL:
+      API_URL:
+  lab7:
+    name: Lab 7 - Labels
+    vars:
+      MASTER_URL:
+      API_URL:
+  lab8:
+    name: Lab 8 - CI/CD Pipelines
+    vars:
+      MASTER_URL:
+      API_URL:
+  lab9:
+    name: Lab9-Blue/Green Deployments	
+    vars:
+      MASTER_URL:
+      API_URL:
