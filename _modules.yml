@@ -54,7 +54,7 @@ modules:
       MASTER_URL:
       API_URL:
   lab9:
-    name: Lab9-Blue/Green Deployments	
+    name: Lab 9 - Blue/Green Deployments	
     vars:
       MASTER_URL:
       API_URL:
