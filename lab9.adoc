@@ -1,0 +1,48 @@
+== Blue/Green Deployments
+
+When implementing continuous delivery for your software one very useful technique is called Blue/Green deployments. It addresses the desire to minimize downtime during the release of a new version of an application to production. Essentially, it involves *running two production versions of your app side-by-side and then switching the routing from the last stable version to the new version once it is verified*. Using OpenShift, this can be very seamless because using containers we can easily and rapidly deploy a duplicate infrastructure to support alternate versions and modify routes as a service. In this lab, we will walk through a simple Blue/Green workflow with a simple web application on OpenShift.
+
+=== Let’s deploy some applications
+
+. Using the OpenShift expertise you have gained so far, deploy two *Node.js* applications using *Node.js 12* and the example Git repository. Name one *blue* and the other *green*. Add them to a new application called *“bluegreen”*. Only *create a route for the blue application*.
+. In the *Topology* view, you should see both *DeploymentConfigs* in a single application bubble. Wait for both DeploymentConfigs to go blue.
++
+image::lab9-topology.png[Topology]
++
+image::lab9-url.png[URL]
++
+. Notice the *blue DC has a route* as noted by the icon on the top right. It is the current production pod.
+
+=== Let’s make some changes
+
+Imagine we have made some changes to the source code for our application. We would want to rebuild our green deployment, switch the traffic over, verify there are no issues, and then go home. Let’s do just that. We won’t actually make any changes to the code, but we can walk through the rest of the procedure.
+
+. Click on the *green deployment config* to pull up the status pane. Go to the *Resources* tab.
+. Click *Start Build*. (Note, for Blue/Green deployments, you would likely not want to setup Git Webhooks to automate building. You could however control all this behavior in Jenkins pipelines!).
+. Once *Build #2* is complete, you should see OpenShift roll out the new build automatically.
+. Now is the time that you may do any final QA testing to your service before going live. We won’t do this today, but being careful can be good thing.
+
+Now that we are satisfied that the green deployment has been updated and is operational, we will move our route from the blue deployment to the green deployment.
+
+. In the *Topology* view, click on the *blue deployment*.
+. In the *Routes* section, click on the name of the active route. It should be blue.
++
+image::lab9-blue-route.png[Blue]
++
+. Go the the YAML tab as we will want to update this route’s definition.
+. *Line 24 of this YAML document*, in the *spec* section defines the service to which this route points. Let’s change the name from *“blue” to “green”*.	
++
+image::lab9-yaml.png[YAML]
++
+. Click *Save* and return to the *Topology* view.
+. Notice that our *green* deployment now has the route.
++
+image::lab9-pod.png[POD]
+
+*Success!* Now all traffic will be directed to our green deployment. If we need to rollback, we could do this by simply updating the route again. This version of rollback can be popular as traffic can be redirected very quickly and in real time.
+						
+=== A/B Testing
+
+A natural progression from Blue/Green deployments is A/B deployments. This involves splitting traffic across the old and new service for a time. Reducing the load on the old while increasing the load on the new.
+
+= Thank You for following the hands on!.
