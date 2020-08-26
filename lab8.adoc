@@ -1,0 +1,104 @@
+== CI/CD Defined
+
+In modern software projects many teams utilize the concept of Continuous Integration (CI) and Continuous Delivery (CD). By setting up a tool chain that continuously builds, tests, and stages software releases, a team can ensure that their product can be reliably released at any time. OpenShift can be an enabler in the creation and management of this tool chain.
+
+In this lab we walk through creating a simple example of a CI/CD pipeline utilizing Jenkins, all running on top of OpenShift! The Jenkins job will trigger OpenShift to build and deploy a test version of the application, validate that the deployment works, and then tag the test version into production.
+
+In OpenShift 4.2, we have also introduced Tekton pipelines. However, they are still in Tech Preview so they will not be covered today.
+
+*Tekton* pipelines are meant to be far more Kubernetes native than other pipeline tools today.
+
+=== Create a Jenkins server in your project		
+
+. Click *+Add* from the left hand menu.
+. Select *From* Catalog.						
+. Search for *“Jenkins”* and select *Jenkins (Ephemeral)*.
++
+image::lab8-jenkins.png[Jenkins]
++
+. Click *Instantiate Template button*.
+. All of the default options are appropriate for this workshop, select *Create* at the bottom of this page.
+. Go back to the *Topology* view and wait for the Jenkins server install and initial configuration to complete. This takes a while. If you are watching the logs, you’ll eventually see a message that says, *“INFO: Jenkins is fully up and running”*. This means that you are getting close.
+. Once Jenkins is finished, you’ll be able to go to the published route and get a screen like this:
++
+image::lab8-jenkins-login.png[Jenkins]
++
+. Click *Log in with OpenShift* and sign in with your OpenShift credentials.
+. Select *Allow selected permissions*.
+. It will take a while for the next page to load. This is Jenkins instantiating your account for the first time. Fair warning, because of the load on this demo environment, it may time out. You can watch the Jenkins log to observe your account being added. Once you see a message like, *“INFO: OpenShift OAuth: adding permissions for user userYOUR#, stored in the matrix as userYOUR#-admin-edit-view, based on OpenShift roles [admin, edit, view]”*, you are close.
+
+=== Create a new application self-service template
+
+To create a new application, we are going to *add a template* to the template catalog and then order that template for our project. This is one way of shortcutting common, repeatable deployments and enabling self-service.
+
+Paste the *YAML pipeline definition* into the text box and click *create*.
+
+=== Create an instance of our new application					
+
+. From the left hand menu, click *+Add*.
+. Select *From Catalog*.
+. Search for *“helloworld”*.
+. Select *nodejs-helloworld-sample*.
++
+image::lab8-nodejs.png[Nodejs]
++
+. Select *Instantiate Template button*.
+. The default options are fine, select *Create*.
+. In the *Topology* view, you should now see two new *DeploymentConfigs: frontend* and *frontend-prod*.
++
+image::lab8-topology.png[Topology]
+
+=== Create a Jenkins pipeline using OpenShift
+
+We will be creating the following very simple (4) stage Jenkins pipeline.			
+
+. Build the application from source.
+. Deploy the test version of the application.
+. Submit for approval, then tag the image for production, otherwise abort.
+. Scale the application.
+
+The first step is to create a build configuration that is based on a Jenkins pipeline strategy. The pipeline is written in the GROOVY language using a Jenkins file format.		
+
+. Go to the following URL:
++
+https://raw.githubusercontent.com/rmkraus/ocp4-workshop/master/jenkins_buildconfig.yml
++
+. Copy all of the YAML file contents.
+. Click the *plus sign* on the right of the top bar.
++
+image::lab8-sign.png[Plus]
++
+. Paste the YAML pipeline definition into the text box and click *Create*.
++
+image::lab8-pipeline.png[Pipeline]
+
+=== Start the pipeline					
+
+. On the left hand menu, select *Builds*.
+. Select your new build definition called *pipeline*.
+. From the *Actions* menu, select *Start Build*.
+. The *Build* Overview w​ill update with the progress directly from Jenkins.					
+. Watch the steps complete until it gets to the step that requires input. Then select *Input Required*.	
++
+image::lab8-build.png[Build]
++
+. This will bring you to the Jenkins UI. In the Jenkins left hand menu, there should be an option called *Paused for Input*. Select that.
+. Select the *Promote button* to promote the project to production.
++
+image::lab8-approval.png[Approval]
++
+. Go back to the OpenShift page to see the completed pipeline.
++
+image::lab8-pipe-build.png[Pipeline Build]
++
+. Go to the *Topology* page to see pods have been deployed to frontend and frontend-prod.
+. More complex pipelines could be created to fine tune the behaviors here. The takeaway is that OpenShift natively has full supported integration with Jenkins pipelines, even when using S2I builds!	
+
+*The following steps are for the next lab.*
+
+. Go to the following URL: 								
++
+https://raw.githubusercontent.com/rmkraus/ocp4-workshop/master/hello_world_template.json 		
++
+. Copy the entire contents of the file.
+. Click the *plus sign* on the right of the top bar.
