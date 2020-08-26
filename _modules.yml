@@ -23,3 +23,8 @@ modules:
     vars:
       MASTER_URL:
       API_URL:
+  lab3:
+    name: Lab 3 - Deploying an App with Source to Image (S2I)
+    vars:
+      MASTER_URL:
+      API_URL:
