@@ -1,0 +1,44 @@
+== Developing and managing you application in OpenShift
+
+In this lab we will explore some of the common activities undertaken by developers working in OpenShift. You will become familiar with how to use environment variables, secrets, build configurations, and more. Let's look at some of the basic things a developer might care about for a deployed app.	
+
+=== Pod logs
+
+In the S2I lab we looked at a build log to inspect the process of turning source code into an image. Now let's inspect the log for a running pod - in particular let's see the web application's logs.
+
+. Go to the *Topology* view, click on our *Node.js application* to get the details pane, and go to the *Resources* tab.
+. Under *Pods*, click *View Logs* next to the running pod. This shows you all of the STDOUT/STDERR logs for the running pod.
+
+These logs are only retained while the pod is active. An operator is available to easily install a support *EFK stack* to enable persistent logs.
+
+=== Modifying the run time environment
+
+Configuration of containers is typically controlled through environment variables. These variables are typically used to control connections to other services, like databases, or even to modify debugging levels for different environments. Let’s modify the environment variables for this running pod.				
+
+. Go to the *Topology* view,  click on our *Node.js application* to get the details pane.
+. From the Actions menu, select *Edit Deployment Config*. A DeploymentConfig is the Kubernetes resource type that controls the creation of your pod.
+. A view of the YAML definition for this *DeploymentConfig* is shown. All resources in Kubernetes are defined with a YAML document. For fine-grained control of your resources, you can submit and edit this YAML from the portal or the CLI. However, most common tasks can be done without editing the YAML directly. Click the *Environment* tab.
+. Two sections appear on this page for controlling the environment variables. The first allows for setting environment variables manually, the second allows a ConfigMap or a Secret to be imported. Although *ConfigMaps* and *Secrets* are very important to proper application control, we won’t be using them today.
+. In the Single Values section, create a new variable named *“TEST”* and give it a value of *1*.
++
+image::lab4-env.png[Environments]
++
+. Click *Save*.
+. Go back to the *Topology* tab. In the *Resources* tab, notice that one application is *Pending* and another is *Running*. This will change to *Terminating* and *Running*. Finally, this will show only one Pod that is running. Because we changed the *DeploymentConfig*, an updated pod was deployed to the cluster. Once the new pod was healthy, the old pod was terminated. This is called a *rolling deployment*.
++
+image::lab4-pods.png[Pods]
+
+=== What about passwords and private keys?
+
+Passwords and Private Keys should be configured using *Secrets* and not set directly as environment variables. Secrets help prevent exposure of confidential information. This is out of the scope of this workshop, but an important detail.					
+
+=== Getting into a pod
+
+In traditional Linux environments, we use SSH to connect to remote servers. In a container world, it would be an anti-pattern to install an SSH server into every container as that SSH server is very likely not a dependency of the application. Instead, Kuberenetes allows us to get a shell into the running container.	
+
+. Go to the *Topology* view, click on our *Node.js application* to get the details pane, and go to the *Resources* tab.
+. Click on the name of the running *pod* under Pods.
+. Select the *Terminal* tab to be given a shell in the container. For pods with more than one container, you will have to choose a container to enter.
+. Try something out. Perhaps enter, *“echo ${TEST}”* to see the value we set in the *DeploymentConfig*.
++
+image::lab4-terminal.png[Terminal]
