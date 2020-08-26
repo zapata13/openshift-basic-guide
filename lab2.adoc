@@ -1,0 +1,36 @@
+== Bring your own docker
+
+It's easy to get started with OpenShift whether you're using our app templates or bringing your existing assets. In this quick lab we will deploy an application using an existing container image. OpenShift will create an image stream for the image as well as deploy and manage containers based on that image. And we will dig into the details to show how all that works.
+
+For this lab, we will be working in the Developer view rather than the Cluster Administrator view we are currently using.
+
+=== Let's point OpenShift to an existing built container image	
+
+. Switch to the *Developer* View:
+.Switch view
+[#lab2-developer-view]
+[caption="Figure 1: "]
+image::lab2-developer-view.png[Developer]
+. All of the options in this menu are available to help fast track your application to the Kubernetes platform. For now, select *Container Image*
+. For the image name, enter *“sonatype/nexus3”* and click the magnifying glass on the right side of the text box.
+. Select *Deployment Config*
+. Observe the default values that are populated from the search.
+. Leave *Create a route* to the application checked. This will make the application accessible outside the cluster.
+. Click *Create*
+.Deploying image
+[#lab2-deploy-image]
+[caption="Figure 2: "]
+image::lab2-depĺoy-image.png[Template]
+
+=== Is anything running?
+
+. Click on your new nexus application in the *topology* view.
+. Click on the Pod and click on *Resources* tab and note the active pods.
+. Watch it move from *Container Creating* status to *Running*.
+
+=== Does this pod do anything?
+
+We created a route to this application when we added the application. Routes are load balanced domain names that are available outside the cluster for accessing your application. They reference service records which are load balanced domain names that are only available inside the cluster. Remember: routes are for external to internal communication, services are for internal to internal communication.
+
+. If you haven’t already, click the nexus application in the *topology* view.
+. Select the URL listed under *Routes*. This will open a page in a new tab displaying the *Nexus Repository Manager*. You can see the pod logs and check if the nexus service is started. Be patient!	 	
