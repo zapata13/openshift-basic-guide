@@ -7,10 +7,9 @@ For this lab, we will be working in the Developer view rather than the Cluster A
 === Let's point OpenShift to an existing built container image	
 
 . Switch to the *Developer* View:
-.Switch view
-[#lab2-developer-view]
-[caption="Figure 1: "]
++
 image::lab2-developer-view.png[Developer]
++
 . All of the options in this menu are available to help fast track your application to the Kubernetes platform. For now, select *Container Image*
 . For the image name, enter *“sonatype/nexus3”* and click the magnifying glass on the right side of the text box.
 . Select *Deployment Config*
@@ -18,8 +17,7 @@ image::lab2-developer-view.png[Developer]
 . Leave *Create a route* to the application checked. This will make the application accessible outside the cluster.
 . Click *Create*
 .Deploying image
-[#lab2-deploy-image]
-[caption="Figure 2: "]
++
 image::lab2-depĺoy-image.png[Template]
 
 === Is anything running?
@@ -27,6 +25,7 @@ image::lab2-depĺoy-image.png[Template]
 . Click on your new nexus application in the *topology* view.
 . Click on the Pod and click on *Resources* tab and note the active pods.
 . Watch it move from *Container Creating* status to *Running*.
+image::lab2-container.png[Container]
 
 === Does this pod do anything?
 
