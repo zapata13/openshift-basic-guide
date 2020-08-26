@@ -28,3 +28,8 @@ modules:
     vars:
       MASTER_URL:
       API_URL:
+  lab4:
+    name: Lab 4 - Developing and Managing your Application
+    vars:
+      MASTER_URL:
+      API_URL:
