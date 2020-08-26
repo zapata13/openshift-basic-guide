@@ -18,3 +18,8 @@ modules:
     vars:
       MASTER_URL:
       API_URL:
+  lab2:
+    name: Lab 2 - BYO Container Image
+    vars:
+      MASTER_URL:
+      API_URL:
