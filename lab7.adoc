@@ -1,0 +1,30 @@
+== Labels
+
+This is a pretty simple lab, we are going to explore labels. You can use labels to organize, group, or select API objects.
+
+For example, pods are "tagged" with labels, and then services use label selectors to identify the pods they proxy to. This makes it possible for services to reference groups of pods, even treating pods with potentially different containers as related entities.			
+
+=== Labels on a pod
+
+. Go to the *Topology* view, click on our *Node.js application* to get the details pane, and go to the *Resources* tab.					
+. Click on the name *from the running pod* under *Pods*.
+. From the *Actions* menu, select *Edit Labels*.
+. Add a label of *“env=prod”* and hit enter.
+. Click *Save*.
+ 							
+One such advantage of labelling our resources is to find them later using the built in search.
+
+. On the left hand menu, under *Advanced*, select *Search*.
+. In the drop down menu to the left of the search bar, select *Pod*. 
+. Search for *env=prod* in the search bar.
+. Click *Enter*.
+. You can now see all of your production pods that are running.
+
+.Search
+[#lab7-search]
+[caption="Figure 1: "]
+image::lab7-search.png[Search]
+
+=== Going further
+
+Remember, everything is Kubernetes is simply a resource that was created through an API call to post the YAML definition. Everything. Use this to your advantage to stay organized. Any relevant metadata can be applied as a label.
