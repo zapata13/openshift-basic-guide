@@ -1,0 +1,32 @@
+== Build triggers: manual, webhooks, and patching - Oh My!
+
+Once you have an app deployed in OpenShift you can take advantage of some continuous capabilities that help to enable DevOps and automate your management process. We will cover some of those in this lab: Build triggers, webhooks, and rollbacks.
+
+=== Build Triggers
+
+When using S2I builds in OpenShift, there are four built-in ways to trigger an application be rebuilt.				
+
+* *Manual* - Manually tell OpenShift to start a new build. This can either be done from the portal or the CLI. This is great for building S2I images into your existing pipelines.						
+* *Webhook* - OpenShift hosts a secure API endpoint that can be called to trigger a build. This is great for connecting OpenShift to your Git system (GitHub, Gitlab, Microsoft TFS, etc).						
+* *ImageChange* - The upstream source image is updated. This is great for automatically applying minor patches to your containers. All health checks are run before the new image is pushed into production with a rolling deployment style.
+* *ConfigurationChange* - The Deployment Config configuration is updated. We did this one earlier!
+
+=== Let’s trigger a manual build:
+
+. Go to the *Topology* view, click on our *Node.js application* to get the details pane, and go to the *Resources* tab.			
+. Click on *Start Build*. You’ll see that *Build #2* will go from started, to running, to complete. You can view the logs if you wish. Once the Build is finished, you can watch the new pod deploy from the details pane as well.
+
+=== Let’s discuss webhooks:
+
+. Go to the *Topology* view, click on our *Node.js application* to get the details pane, and go to the ​Resources​ tab. 							
+. In the *Builds* section, select the name of the Build Config:
++
+image::lab5-builds.png[Builds]
++
+. Scroll down to the bottom of the page and note the *Webhooks* section. You can click the link here to *Copy URL with Secret* that would be needed by your version control system. This webhook can typically be configured in any Git based version control system. When a new commit is pushed to your repository, your VCS will notify OpenShift and automatically trigger a rebuild and redeploy. This behavior can, of course, be changed and tuned.					
+
+=== More control
+
+OpenShift allows for additional control over deployments through the command line and YAML definitions. By default, OpenShift will perform canary, rolling deployments. But perhaps it is more appropriate to simply stop your old version and then start the new one. 
+
+This can be done as well with a recreate update strategy. Strategies can even get more detailed with the ability to create your own strategy for updating your application. If a deployment passes health checks, but still proves to be undesirable, a rollback can easily be initiated from the command line to restore to the last known working version. Later is this lab, we will walk through a Blue/Green deployment scenario.
