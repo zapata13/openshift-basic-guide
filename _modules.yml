@@ -13,3 +13,8 @@ modules:
     vars:
       MASTER_URL:
       API_URL:
+  lab1-welcome:
+    name: Lab 1 - Welcome
+    vars:
+      MASTER_URL:
+      API_URL:
