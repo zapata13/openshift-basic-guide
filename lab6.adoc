@@ -1,0 +1,34 @@
+== Things will go wrong, and that's why we have replication and recovery
+
+Things will go wrong with your software, or your hardware, or from something out of your control. But we can plan for that failure, and planning for it lets us minimize the impact. OpenShift supports this via what we call replication and recovery.
+
+=== Replication
+Let’s walk through replicating, or horizontally scaling, our application. Replication allows for faster recovery after a pod failure and proper load balancing between available replicas.
+
+. Go to the *Topology* view, click on our *Node.js application* to get the details pane, and go to the *Details* tab.
+. At the top of this page is a circle gauge showing 1 pod as active. Just to the right are up and down arrows. Click the *up arrow twice*.
+. The status should now show *“1 - Scaling to 3”*. Continue watching the status until it shows *“3 pods”*.
+. Go to the *Resources* tab and note that there are now *three active pods*.
+. Click the *Route URL* and note that behavior has not changed. The Route traffic (and Service traffic) are automatically load balanced between all of the active and healthy pods.
+
+=== Recovery
+
+If one pod were to fail, another will automatically be created to take its place. We can explore this, but we’ll have to be quick... faster than OpenShift. Read through these directions before executing.
+
+. Go to the *Topology* view, click on our *Node.js application* to get the details pane, and go to the *Resources* tab.
+. Select the name of any of the active pods. *NOW YOU HAVE TO BE QUICK!*						
+. In the *Actions menu*, select *Delete Pod* and confirm by pressing the *Delete* button.
+. Click *Topology* and select your *Node.js application*. If you were fast enough, you’ll be able to see the original container being destroyed. You should also be able to see the new container being created. Through all of these actions, the load balancers for routes and services have automatically stayed up-to-date.
+ 							
+=== Application health
+
+Pods can also enter a state called *CrashLoopBackoff*. This occurs when a particular pod crashes continually. If a pod crashes too many times, Kubernetes will wait before reattempting a deployment. You can emulate this by running *“pkill -9 node”* inside of the same pod (from *Terminal* Tab) a few times, but it is a bit tough to do in real time. If you are quick, you can see this in the details pane.
+
+.Pods
+[#lab6-pods]
+[caption="Figure 1: "]
+image::lab6-pods.png[Pods]
+
+=== Clean up
+
+Scale your application back down to *one replica* before moving on with this lab.
