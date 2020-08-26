@@ -1,10 +1,10 @@
 ---
-id: example-workshop
-name: Example Workshopper Content
+id: enee-workshop-openshift
+name: Enee OpenShift Foundation Workshop
 
 content:
-  url: https://raw.githubusercontent.com/openshift-evangelists/workshopper-content-example/master
+  url: https://raw.githubusercontent.com/zapata13/openshift-basic-guide/master
 
 modules:
   activate:
-  - lab1-welcome
+  - lab1
