@@ -8,11 +8,11 @@ One of the useful components of OpenShift is its source-to-image capability. S2I
 . Select *From Catalog*.
 . Descheck all *types*
 +
-image::lab3-types.png[Types]
+image::../images/lab3-types.png[Types]
 +
 . Select the *Node.js* option. Using the search bar can help.
 +
-image::lab3-nodejs.png[NodeJs]
+image::../images/lab3-nodejs.png[NodeJs]
 +
 . Select *Create Application* button.
 . Under the Git Repo URL field, click *Try Sample*.
@@ -21,19 +21,19 @@ image::lab3-nodejs.png[NodeJs]
 . Select *Deployment Config*.
 . Click *Create*.
 +
-image::lab3-create.png[Create]
+image::../images/lab3-create.png[Create]
 
 === Application Build
 
 . Notice the new application in the *Topology*. Click on it to bring up the details pane. Go to the *Resources* tab.
 +
-image::lab3-topolody.png[NodeJs]
+image::../images/lab3-topolody.png[NodeJs]
 +
 . Notice under *Builds* that you have a new build running. Click *View Logs* to monitor the build progress. Once the build is complete, you’ll see a line that says, *“Push successful”*.
 . Go back to the *Topology* view and select your *Node.js application* again. Again, go to the *Resources* tab. Now under Pods,​ you should see a running pod that is hosting your application.
 +
-image::lab3-resources.png[Resources]
+image::../images/lab3-resources.png[Resources]
 +
 . In the *Routes* group, you should see one active route. Click the URL to see your application.
 +
-image::lab3-app.png[App]
+image::../images/lab3-app.png[App]

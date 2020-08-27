@@ -32,4 +32,4 @@ image::../images/lab2-container.png[Container]
 We created a route to this application when we added the application. Routes are load balanced domain names that are available outside the cluster for accessing your application. They reference service records which are load balanced domain names that are only available inside the cluster. Remember: routes are for external to internal communication, services are for internal to internal communication.
 
 . If you haven’t already, click the nexus application in the *topology* view.
-. Click the URL listed under *Routes* and add "/nexus" at the end. This will open a page in a new tab displaying the *Nexus Repository Manager*. You can see the pod logs and check if the nexus service is started. Be patient!	 	
+. Click the URL listed under *Routes* and add *"/nexus"* at the end. This will open a page in a new tab displaying the *Nexus Repository Manager*. You can see the pod logs and check if the nexus service is started. Be patient!	 	
