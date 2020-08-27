@@ -17,7 +17,7 @@ image::../images/lab2-developer-view.png[Developer]
 . Leave *Create a route* to the application checked. This will make the application accessible outside the cluster.
 . Click *Create*
 +
-image::../images/lab2-depĺoy-image.png[Template]
+image::../images/lab2-deploy-image.png[Template]
 
 === Is anything running?
 
