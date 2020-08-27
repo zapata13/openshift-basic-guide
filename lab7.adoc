@@ -14,7 +14,7 @@ For example, pods are "tagged" with labels, and then services use label selector
  							
 One such advantage of labelling our resources is to find them later using the built in search.
 
-. On the left hand menu, under *Advanced*, select *Search*.
+. On the left hand menu, select *Search*.
 . In the drop down menu to the left of the search bar, select *Pod*. 
 . Search for *env=prod* in the search bar.
 . Click *Enter*.
@@ -23,7 +23,7 @@ One such advantage of labelling our resources is to find them later using the bu
 .Search
 [#lab7-search]
 [caption="Figure 1: "]
-image::lab7-search.png[Search]
+image::../images/lab7-search.png[Search]
 
 === Going further
 
