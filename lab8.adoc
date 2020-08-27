@@ -91,12 +91,3 @@ image::../images/lab8-pipe-build.png[Pipeline Build]
 +
 . Go to the *Topology* page to see pods have been deployed to frontend and frontend-prod.
 . More complex pipelines could be created to fine tune the behaviors here. The takeaway is that OpenShift natively has full supported integration with Jenkins pipelines, even when using S2I builds!	
-
-*The following steps are for the next lab.*
-
-. Go to the following URL: 								
-+
-https://raw.githubusercontent.com/rmkraus/ocp4-workshop/master/hello_world_template.json 		
-+
-. Copy the entire contents of the file.
-. Click the *plus sign* on the right of the top bar.

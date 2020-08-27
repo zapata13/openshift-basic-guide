@@ -7,9 +7,9 @@ When implementing continuous delivery for your software one very useful techniqu
 . Using the OpenShift expertise you have gained so far, deploy two *Node.js* applications using *Node.js 12* and the example Git repository. Name one *blue* and the other *green*. Add them to a new application called *“bluegreen”*. Only *create a route for the blue application*.
 . In the *Topology* view, you should see both *DeploymentConfigs* in a single application bubble. Wait for both DeploymentConfigs to go blue.
 +
-image::lab9-topology.png[Topology]
+image::../images/lab9-topology.png[Topology]
 +
-image::lab9-url.png[URL]
+image::../images/lab9-url.png[URL]
 +
 . Notice the *blue DC has a route* as noted by the icon on the top right. It is the current production pod.
 
@@ -27,17 +27,17 @@ Now that we are satisfied that the green deployment has been updated and is oper
 . In the *Topology* view, click on the *blue deployment*.
 . In the *Routes* section, click on the name of the active route. It should be blue.
 +
-image::lab9-blue-route.png[Blue]
+image::../images/lab9-blue-route.png[Blue]
 +
 . Go the the YAML tab as we will want to update this route’s definition.
 . *Line 24 of this YAML document*, in the *spec* section defines the service to which this route points. Let’s change the name from *“blue” to “green”*.	
 +
-image::lab9-yaml.png[YAML]
+image::../images/lab9-yaml.png[YAML]
 +
 . Click *Save* and return to the *Topology* view.
 . Notice that our *green* deployment now has the route.
 +
-image::lab9-pod.png[POD]
+image::../images/lab9-pod.png[POD]
 
 *Success!* Now all traffic will be directed to our green deployment. If we need to rollback, we could do this by simply updating the route again. This version of rollback can be popular as traffic can be redirected very quickly and in real time.
 						
