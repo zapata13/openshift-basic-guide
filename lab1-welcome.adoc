@@ -37,11 +37,4 @@ First let's create a new project to do our workshop work in. We will use the stu
 .Create Project
 [#lab1-project]
 [caption="Figure 1: "]
-image::lab1-project.png[Project]
-
-
-e.g. 
-```
-API_URL: {{ API_URL }}
-MASTER_URL: {{ MASTER_URL }}
-```
+image::images/lab1-project.png[Project]
