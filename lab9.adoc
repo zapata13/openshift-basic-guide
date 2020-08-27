@@ -30,7 +30,7 @@ Now that we are satisfied that the green deployment has been updated and is oper
 image::../images/lab9-blue-route.png[Blue]
 +
 . Go the the YAML tab as we will want to update this route’s definition.
-. *Line 24 of this YAML document*, in the *spec* section defines the service to which this route points. Let’s change the name from *“blue” to “green”*.	
+. *Line 58 of this YAML document*, in the *spec* section defines the service to which this route points. Let’s change the name from *“blue” to “green”*.	
 +
 image::../images/lab9-yaml.png[YAML]
 +
