@@ -8,28 +8,29 @@ For this lab, we will be working in the Developer view rather than the Cluster A
 
 . Switch to the *Developer* View:
 +
-image::lab2-developer-view.png[Developer]
+image::../images/lab2-developer-view.png[Developer]
 +
 . All of the options in this menu are available to help fast track your application to the Kubernetes platform. For now, select *Container Image*
-. For the image name, enter *“sonatype/nexus3”* and click the magnifying glass on the right side of the text box.
+. For the image name, enter *“sonatype/nexus3”*.
 . Select *Deployment Config*
 . Observe the default values that are populated from the search.
 . Leave *Create a route* to the application checked. This will make the application accessible outside the cluster.
 . Click *Create*
 .Deploying image
 +
-image::lab2-depĺoy-image.png[Template]
+image::../images/lab2-depĺoy-image.png[Template]
 
 === Is anything running?
 
 . Click on your new nexus application in the *topology* view.
 . Click on the Pod and click on *Resources* tab and note the active pods.
 . Watch it move from *Container Creating* status to *Running*.
-image::lab2-container.png[Container]
++
+image::../images/lab2-container.png[Container]
 
 === Does this pod do anything?
 
 We created a route to this application when we added the application. Routes are load balanced domain names that are available outside the cluster for accessing your application. They reference service records which are load balanced domain names that are only available inside the cluster. Remember: routes are for external to internal communication, services are for internal to internal communication.
 
 . If you haven’t already, click the nexus application in the *topology* view.
-. Select the URL listed under *Routes*. This will open a page in a new tab displaying the *Nexus Repository Manager*. You can see the pod logs and check if the nexus service is started. Be patient!	 	
+. Click the URL listed under *Routes* and add "/nexus" at the end. This will open a page in a new tab displaying the *Nexus Repository Manager*. You can see the pod logs and check if the nexus service is started. Be patient!	 	
