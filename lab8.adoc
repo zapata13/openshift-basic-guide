@@ -14,14 +14,14 @@ In OpenShift 4.2, we have also introduced Tekton pipelines. However, they are st
 . Select *From* Catalog.						
 . Search for *“Jenkins”* and select *Jenkins (Ephemeral)*.
 +
-image::lab8-jenkins.png[Jenkins]
+image::../images/lab8-jenkins.png[Jenkins]
 +
 . Click *Instantiate Template button*.
 . All of the default options are appropriate for this workshop, select *Create* at the bottom of this page.
 . Go back to the *Topology* view and wait for the Jenkins server install and initial configuration to complete. This takes a while. If you are watching the logs, you’ll eventually see a message that says, *“INFO: Jenkins is fully up and running”*. This means that you are getting close.
 . Once Jenkins is finished, you’ll be able to go to the published route and get a screen like this:
 +
-image::lab8-jenkins-login.png[Jenkins]
+image::../images/lab8-jenkins-login.png[Jenkins]
 +
 . Click *Log in with OpenShift* and sign in with your OpenShift credentials.
 . Select *Allow selected permissions*.
@@ -40,13 +40,13 @@ Paste the *YAML pipeline definition* into the text box and click *create*.
 . Search for *“helloworld”*.
 . Select *nodejs-helloworld-sample*.
 +
-image::lab8-nodejs.png[Nodejs]
+image::../images/lab8-nodejs.png[Nodejs]
 +
 . Select *Instantiate Template button*.
 . The default options are fine, select *Create*.
 . In the *Topology* view, you should now see two new *DeploymentConfigs: frontend* and *frontend-prod*.
 +
-image::lab8-topology.png[Topology]
+image::../images/lab8-topology.png[Topology]
 
 === Create a Jenkins pipeline using OpenShift
 
@@ -66,11 +66,11 @@ https://raw.githubusercontent.com/rmkraus/ocp4-workshop/master/jenkins_buildconf
 . Copy all of the YAML file contents.
 . Click the *plus sign* on the right of the top bar.
 +
-image::lab8-sign.png[Plus]
+image::../images/lab8-sign.png[Plus]
 +
 . Paste the YAML pipeline definition into the text box and click *Create*.
 +
-image::lab8-pipeline.png[Pipeline]
+image::../images/lab8-pipeline.png[Pipeline]
 
 === Start the pipeline					
 
@@ -80,16 +80,16 @@ image::lab8-pipeline.png[Pipeline]
 . The *Build* Overview w​ill update with the progress directly from Jenkins.					
 . Watch the steps complete until it gets to the step that requires input. Then select *Input Required*.	
 +
-image::lab8-build.png[Build]
+image::../images/lab8-build.png[Build]
 +
 . This will bring you to the Jenkins UI. In the Jenkins left hand menu, there should be an option called *Paused for Input*. Select that.
 . Select the *Promote button* to promote the project to production.
 +
-image::lab8-approval.png[Approval]
+image::../images/lab8-approval.png[Approval]
 +
 . Go back to the OpenShift page to see the completed pipeline.
 +
-image::lab8-pipe-build.png[Pipeline Build]
+image::../images/lab8-pipe-build.png[Pipeline Build]
 +
 . Go to the *Topology* page to see pods have been deployed to frontend and frontend-prod.
 . More complex pipelines could be created to fine tune the behaviors here. The takeaway is that OpenShift natively has full supported integration with Jenkins pipelines, even when using S2I builds!	
