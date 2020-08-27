@@ -16,7 +16,6 @@ image::../images/lab2-developer-view.png[Developer]
 . Observe the default values that are populated from the search.
 . Leave *Create a route* to the application checked. This will make the application accessible outside the cluster.
 . Click *Create*
-.Deploying image
 +
 image::../images/lab2-depĺoy-image.png[Template]
 
