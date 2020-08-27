@@ -21,12 +21,12 @@ Configuration of containers is typically controlled through environment variable
 . Two sections appear on this page for controlling the environment variables. The first allows for setting environment variables manually, the second allows a ConfigMap or a Secret to be imported. Although *ConfigMaps* and *Secrets* are very important to proper application control, we won’t be using them today.
 . In the Single Values section, create a new variable named *“TEST”* and give it a value of *1*.
 +
-image::lab4-env.png[Environments]
+image::../images/lab4-env.png[Environments]
 +
 . Click *Save*.
 . Go back to the *Topology* tab. In the *Resources* tab, notice that one application is *Pending* and another is *Running*. This will change to *Terminating* and *Running*. Finally, this will show only one Pod that is running. Because we changed the *DeploymentConfig*, an updated pod was deployed to the cluster. Once the new pod was healthy, the old pod was terminated. This is called a *rolling deployment*.
 +
-image::lab4-pods.png[Pods]
+image::../images/lab4-pods.png[Pods]
 
 === What about passwords and private keys?
 
@@ -41,4 +41,4 @@ In traditional Linux environments, we use SSH to connect to remote servers. In a
 . Select the *Terminal* tab to be given a shell in the container. For pods with more than one container, you will have to choose a container to enter.
 . Try something out. Perhaps enter, *“echo ${TEST}”* to see the value we set in the *DeploymentConfig*.
 +
-image::lab4-terminal.png[Terminal]
+image::../images/lab4-terminal.png[Terminal]
