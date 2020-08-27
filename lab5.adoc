@@ -21,7 +21,7 @@ When using S2I builds in OpenShift, there are four built-in ways to trigger an a
 . Go to the *Topology* view, click on our *Node.js application* to get the details pane, and go to the ​Resources​ tab. 							
 . In the *Builds* section, select the name of the Build Config:
 +
-image::lab5-builds.png[Builds]
+image::../images/lab5-builds.png[Builds]
 +
 . Scroll down to the bottom of the page and note the *Webhooks* section. You can click the link here to *Copy URL with Secret* that would be needed by your version control system. This webhook can typically be configured in any Git based version control system. When a new commit is pushed to your repository, your VCS will notify OpenShift and automatically trigger a rebuild and redeploy. This behavior can, of course, be changed and tuned.					
 
