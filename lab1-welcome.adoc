@@ -37,4 +37,4 @@ First let's create a new project to do our workshop work in. We will use the stu
 .Create Project
 [#lab1-project]
 [caption="Figure 1: "]
-image::images/lab1-project.png[Project]
+image::../images/lab1-project.png[Project]
