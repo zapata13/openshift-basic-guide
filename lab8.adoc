@@ -29,9 +29,7 @@ image::../images/lab8-jenkins-login.png[Jenkins]
 
 === Create a new application self-service template
 
-To create a new application, we are going to *add a template* to the template catalog and then order that template for our project. This is one way of shortcutting common, repeatable deployments and enabling self-service.
-
-Paste the *YAML pipeline definition* into the text box and click *create*.
+To create a new application, we are going order a template for our project. This is one way of shortcutting common, repeatable deployments and enabling self-service.
 
 === Create an instance of our new application					
 
