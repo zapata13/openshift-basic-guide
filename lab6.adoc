@@ -27,7 +27,7 @@ Pods can also enter a state called *CrashLoopBackoff*. This occurs when a partic
 .Pods
 [#lab6-pods]
 [caption="Figure 1: "]
-image::lab6-pods.png[Pods]
+image::../images/lab6-pods.png[Pods]
 
 === Clean up
 
